@@ -11,7 +11,6 @@ public class Application {
     static boolean containsInvalidCharacter(String str) {
         for (int i = 0; i < str.length();) {
             int charPointer = str.codePointAt(i);
-
             if (Character.isWhitespace(charPointer)) {
                 return true;
             }
@@ -37,7 +36,6 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameInput = Console.readLine();
         String[] carNames = carNameInput.split(",");
-
         for (int i = 0; i < carNames.length; i++) {
             if (containsInvalidCharacter(carNames[i])) {
                 throw new IllegalArgumentException("자동차 이름에 사용 불가능한 문자가 있습니다. 화이트스페이스 문자 및 ISO 제어 문자는 사용 불가능합니다.");
@@ -104,8 +102,20 @@ public class Application {
                 winners.add(carNames[i]);
             }
         }
-
         return winners;
+    }
+
+    static void printWinners(List<String> winners) {
+        System.out.print("최종 우승자 : ");
+        Iterator<String> iterator = winners.iterator();
+        while (iterator.hasNext()) {
+            String winner = iterator.next();
+            System.out.print(winner);
+            if (iterator.hasNext()) {
+                System.out.print(", ");
+            }
+        }
+        return;
     }
 
     public static void main(String[] args) {
@@ -118,5 +128,8 @@ public class Application {
             travelDistance = simulateOneMovementCycle(travelDistance);
             printCurrentSituation(carNames, travelDistance);
         }
+
+        winners = determineWinners(carNames, travelDistance, winners);
+        printWinners(winners);
     }
 }
