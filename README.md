@@ -18,4 +18,4 @@
 	1. 변수 "int maxDistance = -1;"을 정의하고 배열을 순회한다. 배열에서 maxDistance보다 큰 값을 마주치면 그 값을 maxDistance의 값으로 저장한다.
 	1. 리스트 "List<String> winners = new ArrayList<>();"을 정의한다. maxDistance의 값이 변경될 때마다 winners를 초기화시킨 후 현재 배열의 인덱스에 해당하는 자동차 이름을 저장한다.
 	1. 만일 maxDistance에 저장된 값과 동일한 값을 마주치면, winners에 그 배열의 인덱스에 해당하는 자동차 이름 또한 저장한다.
-우승자들을 모두 출력한다. 
+1. 우승자들을 모두 출력한다. 

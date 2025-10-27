@@ -93,6 +93,20 @@ public class Application {
         return;
     }
 
+    static List<String> determineWinners(String[] carNames, int[] travelDistance, List<String> winners) {
+        int maxDistance = -1;
+        for (int i = 0; i < travelDistance.length; i++) {
+            if (travelDistance[i] > maxDistance) {
+                winners.clear();
+                winners.add(carNames[i]);
+                maxDistance = travelDistance[i];
+            } else if (travelDistance[i] == maxDistance) {
+                winners.add(carNames[i]);
+            }
+        }
+
+        return winners;
+    }
 
     public static void main(String[] args) {
         String[] carNames = inputCarName();
