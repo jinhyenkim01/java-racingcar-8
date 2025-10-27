@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Application {
     static boolean containsInvalidCharacter(String str) {
@@ -41,6 +43,12 @@ public class Application {
             }
             if (invalidCarNameLength(carNames[i])) {
                 throw new IllegalArgumentException("자동차 이름은 최대 5자 이하여야 합니다.");
+            }
+        }
+        Set<String> checkUniqueness = new HashSet<>();
+        for (String name : carNames) {
+            if (!checkUniqueness.add(name)) {
+                throw new IllegalArgumentException("자동차 이름은 서로 중복될 수 없습니다.");
             }
         }
         return carNames;
