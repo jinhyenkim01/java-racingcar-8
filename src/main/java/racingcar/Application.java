@@ -31,13 +31,16 @@ public class Application {
     static String[] inputCarName() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNameInput = Console.readLine();
+        if (carNameInput.contains(",,")) {
+            throw new IllegalArgumentException("자동차 이름은 최소 1자 이상이여야 합니다. 쉼표를 연속으로 사용할 수 없습니다.");
+        }
         String[] carNames = carNameInput.split(",");
         for (int i = 0; i < carNames.length; i++) {
             if (containsInvalidCharacter(carNames[i])) {
                 throw new IllegalArgumentException("자동차 이름에 사용 불가능한 문자가 있습니다. 화이트스페이스 문자 및 ISO 제어 문자는 사용 불가능합니다.");
             }
             if (invalidCarNameLength(carNames[i])) {
-                throw new IllegalArgumentException("자동차 이름은 최소 1자 이상, 최대 5자 이하여야 합니다.");
+                throw new IllegalArgumentException("자동차 이름은 최대 5자 이하여야 합니다.");
             }
         }
         return carNames;
