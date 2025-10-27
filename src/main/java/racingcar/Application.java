@@ -80,6 +80,20 @@ public class Application {
         return travelDistance;
     }
 
+    static void printCurrentSituation(String[] carNames, int[] travelDistance) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < travelDistance.length; i++) {
+            System.out.print(carNames[i] + " : ");
+            for (int j = 0; j < travelDistance[i]; j++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
+        return;
+    }
+
+
     public static void main(String[] args) {
         String[] carNames = inputCarName();
         int noOfRaces = inputNoOfRaces();
@@ -88,6 +102,7 @@ public class Application {
 
         for (int i = 0; i < noOfRaces; i++) {
             travelDistance = simulateOneMovementCycle(travelDistance);
+            printCurrentSituation(carNames, travelDistance);
         }
     }
 }
