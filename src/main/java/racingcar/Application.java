@@ -49,9 +49,23 @@ public class Application {
         return carNames;
     }
 
-
+    static int inputNoOfRaces() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        String attemptNumberInput = Console.readLine();
+        int attemptNumber;
+        try {
+            attemptNumber = Integer.parseInt(attemptNumberInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 자연수여야 합니다.");
+        }
+        if (attemptNumber < 1) {
+            throw new IllegalArgumentException("시도 횟수는 자연수여야 합니다.");
+        }
+        return attemptNumber;
+    }
 
     public static void main(String[] args) {
         String[] carNames = inputCarName();
+        int noOfRaces = inputNoOfRaces();
     }
 }
