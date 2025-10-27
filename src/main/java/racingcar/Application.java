@@ -2,14 +2,13 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Application {
     static boolean containsInvalidCharacter(String str) {
-        for (int i = 0; i < str.length();) {
+        for (int i = 0; i < str.length(); ) {
             int charPointer = str.codePointAt(i);
             if (Character.isWhitespace(charPointer)) {
                 return true;
@@ -26,10 +25,7 @@ public class Application {
         if (str.isEmpty()) {
             return true;
         }
-        if (str.length() > 5) {
-            return true;
-        }
-        return false;
+        return str.length() > 5;
     }
 
     static String[] inputCarName() {
@@ -88,7 +84,6 @@ public class Application {
             System.out.println();
         }
         System.out.println();
-        return;
     }
 
     static List<String> determineWinners(String[] carNames, int[] travelDistance, List<String> winners) {
@@ -115,7 +110,6 @@ public class Application {
                 System.out.print(", ");
             }
         }
-        return;
     }
 
     public static void main(String[] args) {
