@@ -64,8 +64,30 @@ public class Application {
         return attemptNumber;
     }
 
+    static int determineAdvanceDistance() {
+        int randomInt = Randoms.pickNumberInRange(0, 9);
+        if (randomInt > 3) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    static int[] simulateOneMovementCycle(int[] travelDistance) {
+        for (int i = 0; i < travelDistance.length; i++) {
+            travelDistance[i] = travelDistance[i] + determineAdvanceDistance();
+        }
+        return travelDistance;
+    }
+
     public static void main(String[] args) {
         String[] carNames = inputCarName();
         int noOfRaces = inputNoOfRaces();
+        int[] travelDistance = new int[carNames.length];
+        List<String> winners = new ArrayList<>();
+
+        for (int i = 0; i < noOfRaces; i++) {
+            travelDistance = simulateOneMovementCycle(travelDistance);
+        }
     }
 }
